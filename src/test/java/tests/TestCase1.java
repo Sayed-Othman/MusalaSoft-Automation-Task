@@ -1,31 +1,26 @@
 package tests;
-
 import java.io.IOException;
-
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import pages.HomePage;
-import utilities.AllureListener;
+import utilities.Listener;
 import utilities.PropertyManager;
 import utilities.ReadExcel;
 
-
-@Listeners({AllureListener.class})
+@Listeners({Listener.class})
 public class TestCase1 extends BaseTest {
 
 	private HomePage homePage;
-	
+
 	@Test(dataProvider ="ExcelData",description="Verify invalid email address on Contact us form" )
 	@Description("Verify that invalid email address returns the expected error msg")
 	@Epic ("MusalaSoft TestCase1")
@@ -36,9 +31,10 @@ public class TestCase1 extends BaseTest {
 		homePage.enterSubject("mySubject");
 		homePage.enterMessageText("This is My message");
 		homePage.clickSubmitButton();
-		
+
 		Assert.assertEquals(homePage.getErrorMessage(),
 				"The e-mail address entered is invalid."); 
+
 	}
 
 	@DataProvider(name="ExcelData")
@@ -53,7 +49,7 @@ public class TestCase1 extends BaseTest {
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver();
 		}
-		
+
 		else if (PropertyManager.getInstance().getbrowser().equalsIgnoreCase("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
@@ -64,21 +60,5 @@ public class TestCase1 extends BaseTest {
 
 	}
 
-
-	@AfterMethod
-	public void teardown () {
-		driver.quit();
-	}
-	
 }
-
-
-
-
-
-
-
-
-
-
 

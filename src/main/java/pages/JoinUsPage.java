@@ -1,23 +1,20 @@
 package pages;
-
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-
 import io.qameta.allure.Step;
 
 public class JoinUsPage extends BasePage {
 
-	//constructor
+	//Constructor
 	public JoinUsPage(WebDriver driver) {
 		super(driver);
 	}
 
 	//ElementLocators
-	
+
 	private By ExperiencedAutomationQAEngineerLink =
 			By.xpath("//a[contains(.,'Experienced Automation QA Engineer')]");
 
@@ -41,9 +38,9 @@ public class JoinUsPage extends BasePage {
 	}
 	@Step("Print in the console the results of available positions by city")
 	public void printIntoConsole() {
-		
-		
-	
+
+
+
 		String Location;
 		for(int j = 0 ;j<1;j++) {
 			Location = "Sofia";

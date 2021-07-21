@@ -6,7 +6,7 @@ import io.qameta.allure.Step;
 
 public class CompanyPage extends BasePage  {
 
-	//constructor
+	//Constructor
 	public CompanyPage (WebDriver driver) {
 		super(driver);
 	}
@@ -21,7 +21,7 @@ public class CompanyPage extends BasePage  {
 	}
 	@Step("Click on the Facebook button")
 	public void clickFBButton() {
-	
+
 		BasePage.footerElements(3);
 		BasePage.switchWindow();
 	}

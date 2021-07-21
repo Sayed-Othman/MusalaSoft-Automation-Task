@@ -1,12 +1,9 @@
 package pages;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
 import io.qameta.allure.Step;
 
 public class CareerPage extends BasePage {
-
 
 	//Constructor
 	public CareerPage(WebDriver driver) {

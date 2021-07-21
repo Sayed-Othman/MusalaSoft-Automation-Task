@@ -12,6 +12,7 @@ public class PropertyManager {
 	private static String browser;
 	private static String TestDataFilePath;
 	private static String CVfilePath;
+	private static String ScreenShotsFolderPath;
 
 	
 
@@ -41,6 +42,7 @@ public class PropertyManager {
 		browser = prop.getProperty("browser");
 		TestDataFilePath = prop.getProperty("TestDataFilePath");
 		CVfilePath      =prop.getProperty("CVfilePath");
+		ScreenShotsFolderPath=prop.getProperty("ScreenShotsFolderPath");
 		
 
 	}
@@ -55,6 +57,9 @@ public class PropertyManager {
 	}
 	public String getCVfilePath () {
 		return CVfilePath;
+	}
+	public String getScreenShotsFolderPath () {
+		return ScreenShotsFolderPath;
 	}
 	
 

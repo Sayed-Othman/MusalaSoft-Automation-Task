@@ -1,24 +1,21 @@
 package tests;
-
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Description;
 import io.qameta.allure.Epic;
 import pages.CareerPage;
 import pages.HomePage;
 import pages.JoinUsPage;
-import utilities.AllureListener;
+import utilities.Listener;
 import utilities.PropertyManager;
 
-@Listeners({AllureListener.class})
+@Listeners({Listener.class})
 public class TestCase4  extends BaseTest{
+
 	private HomePage homePage;
 	private CareerPage careerPage;
 	private JoinUsPage joinUsPage;
@@ -52,10 +49,5 @@ public class TestCase4  extends BaseTest{
 		careerPage = new CareerPage(driver);
 		homePage = new HomePage(driver);
 	}	
-
-	@AfterMethod
-	public void teardown () {
-		driver.quit();
-	}
 
 }

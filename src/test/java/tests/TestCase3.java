@@ -1,10 +1,8 @@
 package tests;
 
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -16,20 +14,18 @@ import pages.CareerPage;
 import pages.ExperiencedAutomationQAEngineerPage;
 import pages.HomePage;
 import pages.JoinUsPage;
-import utilities.AllureListener;
+import utilities.Listener;
 import utilities.PropertyManager;
 
-@Listeners({AllureListener.class})
+@Listeners({Listener.class})
 
 public class TestCase3 extends BaseTest{
-
 	private	String CVFilePath = PropertyManager.getInstance().getCVfilePath();
 	private	String currentDir = System.getProperty("user.dir");
 	private HomePage homePage;
 	private CareerPage careerPage;
 	private JoinUsPage joinUsPage;
 	private ExperiencedAutomationQAEngineerPage experiencedAutomationQAEngineerPage;
-
 
 	@Test(priority=0,description="Verify correct URL of JoinUs page" )
 	@Description("Verify that the correct URL of the JoinUs page loads after clicking Check our open positions button ")
@@ -44,11 +40,10 @@ public class TestCase3 extends BaseTest{
 				"https://www.musala.com/careers/join-us/");   
 	}
 
-
 	@Test(priority=1,description="Verify main sections are shown on an open position's page" )
 	@Description("Verify the following sections are shown: General Description, Requirements, Responsibilities,What we offer")
 	@Epic("Musalasoft TestCase3")
-	
+
 	public void verifySectionsAreShown() 
 
 	{   	
@@ -69,7 +64,7 @@ public class TestCase3 extends BaseTest{
 		careerPage.clickOpenPositions();
 		joinUsPage.chooseFromDropDownList();
 		joinUsPage.clickExperiencedAutomationQAEngineer();
-		
+
 		Assert.assertTrue(experiencedAutomationQAEngineerPage.applyButtonIsPresented());
 	}
 
@@ -86,10 +81,10 @@ public class TestCase3 extends BaseTest{
 		experiencedAutomationQAEngineerPage.enterInvalidEmail("test@test");
 		experiencedAutomationQAEngineerPage.uploadCV(currentDir +CVFilePath );
 		experiencedAutomationQAEngineerPage.clickSendButton();
-		
+
 		Assert.assertEquals(experiencedAutomationQAEngineerPage.getEmailErrorMessage(),
 				"The e-mail address entered is invalid.");
-		
+
 		Assert.assertEquals(experiencedAutomationQAEngineerPage.getNameErrorMessage(),
 				"The field is required.");
 	}
@@ -116,10 +111,6 @@ public class TestCase3 extends BaseTest{
 
 	}
 
-	@AfterMethod
-	public void teardown () {
-		driver.quit();
-	}
 }
 
 

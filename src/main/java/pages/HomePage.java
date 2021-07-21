@@ -1,22 +1,19 @@
 package pages;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import io.qameta.allure.Step;
 
 
 
 public class HomePage extends BasePage  {
 
-	//constructor
+	//Constructor
 	public HomePage(WebDriver driver) {
 		super(driver);
 	}
@@ -73,7 +70,7 @@ public class HomePage extends BasePage  {
 		String TheInvalidMessage = driver.findElement(EmailInvalidMessage).getText();
 		return TheInvalidMessage;
 	}
-	
+
 	@Step("Click on Company tab")
 	public void clickCompanyTab() 
 	{
@@ -83,9 +80,9 @@ public class HomePage extends BasePage  {
 		wait.until(ExpectedConditions.elementToBeClickable(CompanyTab));
 		Actions action = new Actions(driver);
 		action.doubleClick(CompanyTab).perform();
-	
+
 	}
-	
+
 	@Step("Click on Career tab")
 	public  void clickCareerTab()  {
 		WebElement CareerTab = 
@@ -97,8 +94,3 @@ public class HomePage extends BasePage  {
 		action.click(CareerTab).perform();
 	}
 }
-
-
-
-
-

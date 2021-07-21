@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite parallel="true" name="Suite">
+  <test name="Test">
+    <classes>
+     	 <class name="tests.TestCase2"  parallel = "classes"  thread-count = "3"/>
+           <class name="tests.TestCase3"  parallel = "classes" thread-count = "3"/>
+            <class name="tests.TestCase4"  parallel = "classes" thread-count = "3"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

@@ -1,8 +1,6 @@
 package pages;
-
 import java.util.List;
 import java.util.Set;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -65,7 +63,7 @@ public class BasePage {
 
 	//This method is for finding and clicking footer elements .
 	// int j represents the order of the footer element.
-	//for FaceBook button j = 3. 
+	//for FaceBook button j = 3. for ContactUs button j = 0. 
 	public static void  footerElements(int j) {
 		By FooterLinks = By.xpath("//div[@class='links-buttons']");
 		WebElement footer = driver.findElement(FooterLinks);
@@ -74,7 +72,7 @@ public class BasePage {
 
 		WebDriverWait wait = new WebDriverWait(driver,30);
 		wait.until(ExpectedConditions.elementToBeClickable(elementName));
-		
+
 		Actions action = new Actions(driver);
 		action.moveToElement(elementName).click(elementName).perform();	
 	}
