@@ -18,6 +18,7 @@ public class ExperiencedAutomationQAEngineerPage extends BasePage {
 	private By UploadFileField =By.xpath("//*[@id='uploadtextfield']");
 	private By SendButton      = By.xpath("//input[@type='submit']");
 	private By InvalidemailMessage = By.xpath("//*[@id=\"wpcf7-f880-o1\"]/form/p[3]/span/span");
+	private By EmptynameMessage = By.xpath("//*[@id=\"wpcf7-f880-o1\"]/form/p[2]/span/span");
 
 	//Methods
 	@Step("Verify that the page contains: Requirements-General Description-Responsibilities-What we offer")
@@ -59,10 +60,17 @@ public class ExperiencedAutomationQAEngineerPage extends BasePage {
 
 	
 	@Step("Get Error Message for invalid email")
-	public String getErrorMessage() {
+	public String getEmailErrorMessage() {
 		BasePage.switchWindow();
 		BasePage.presenceOfElement(driver, 30, InvalidemailMessage);
 		String TheInvalidMessage = driver.findElement(InvalidemailMessage).getText();
+		return TheInvalidMessage;
+	}
+	@Step("Get Error Message for empty name field")
+	public String getNameErrorMessage() {
+		BasePage.switchWindow();
+		BasePage.presenceOfElement(driver, 30, EmptynameMessage);
+		String TheInvalidMessage = driver.findElement(EmptynameMessage).getText();
 		return TheInvalidMessage;
 	}
 	@Step("Verify that Apply button is present")

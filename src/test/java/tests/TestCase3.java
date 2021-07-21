@@ -1,10 +1,12 @@
 package tests;
 
 import org.openqa.selenium.chrome.ChromeDriver;
+
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -14,7 +16,10 @@ import pages.CareerPage;
 import pages.ExperiencedAutomationQAEngineerPage;
 import pages.HomePage;
 import pages.JoinUsPage;
+import utilities.AllureListener;
 import utilities.PropertyManager;
+
+@Listeners({AllureListener.class})
 
 public class TestCase3 extends BaseTest{
 
@@ -29,12 +34,14 @@ public class TestCase3 extends BaseTest{
 	@Test(priority=0,description="Verify correct URL of JoinUs page" )
 	@Description("Verify that the correct URL of the JoinUs page loads after clicking Check our open positions button ")
 	@Epic("Musalasoft TestCase3")
-	public void verifyJoinUsPageURL() {
+	public void verifyJoinUsPageURL()  
+	{
 
 		homePage.clickCareerTab();
 		careerPage.clickOpenPositions();
 
-		Assert.assertEquals(joinUsPage.getCurrentURL(), "https://www.musala.com/careers/join-us/");   
+		Assert.assertEquals(joinUsPage.getCurrentURL(), 
+				"https://www.musala.com/careers/join-us/");   
 	}
 
 
@@ -42,7 +49,7 @@ public class TestCase3 extends BaseTest{
 	@Description("Verify the following sections are shown: General Description, Requirements, Responsibilities,What we offer")
 	@Epic("Musalasoft TestCase3")
 	
-	public void verifySectionsAreShown()
+	public void verifySectionsAreShown() 
 
 	{   	
 		homePage.clickCareerTab();
@@ -56,19 +63,20 @@ public class TestCase3 extends BaseTest{
 	@Test(priority=2,description="Verify apply button is present" )
 	@Description("Verify that the apply button is present on an open position page")
 	@Epic("Musalasoft TestCase3")
-	public void verifyApplyButtonIsPresent()
+	public void verifyApplyButtonIsPresent() 
 	{   
 		homePage.clickCareerTab();
 		careerPage.clickOpenPositions();
 		joinUsPage.chooseFromDropDownList();
 		joinUsPage.clickExperiencedAutomationQAEngineer();
+		
 		Assert.assertTrue(experiencedAutomationQAEngineerPage.applyButtonIsPresented());
 	}
 
-	@Test(priority=3,description="Verify Error message is shown for invalid data on Job application" )
-	@Description("Verify that entering invalid data in Job application form returns error message")
+	@Test(priority=3,description="Verify Error messages are shown for invalid data on Job application" )
+	@Description("Verify that entering invalid data in Job application form returns error messages")
 	@Epic("Musalasoft TestCase3")
-	public void verifyApplyErrorMessageIsShown()
+	public void verifyApplyErrorMessagesAreShown() 
 	{   
 		homePage.clickCareerTab();
 		careerPage.clickOpenPositions();
@@ -78,8 +86,12 @@ public class TestCase3 extends BaseTest{
 		experiencedAutomationQAEngineerPage.enterInvalidEmail("test@test");
 		experiencedAutomationQAEngineerPage.uploadCV(currentDir +CVFilePath );
 		experiencedAutomationQAEngineerPage.clickSendButton();
-		Assert.assertEquals(experiencedAutomationQAEngineerPage.getErrorMessage(),
+		
+		Assert.assertEquals(experiencedAutomationQAEngineerPage.getEmailErrorMessage(),
 				"The e-mail address entered is invalid.");
+		
+		Assert.assertEquals(experiencedAutomationQAEngineerPage.getNameErrorMessage(),
+				"The field is required.");
 	}
 
 	@BeforeMethod

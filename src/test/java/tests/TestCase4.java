@@ -26,7 +26,8 @@ public class TestCase4  extends BaseTest{
 	@Test(priority=0,description="Print available positions in selected cities" )
 	@Description("Print in the console with a specific format all available positions for Sofia and Skopje")
 	@Epic("Musalasoft TestCase4")
-	public void printAvailablePositionsInCity() {
+	public void printAvailablePositionsInCity() 
+	{
 
 		homePage.clickCareerTab();
 		careerPage.clickOpenPositions();

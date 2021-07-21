@@ -30,42 +30,40 @@ public class TestCase2 extends BaseTest {
 	@Test(priority=0,description="Verify correct URL of company page" )
 	@Description("Verify that the correct URL of the company page loads after clicking Company tab")
 	@Epic ("Musalasoft TestCase2")
-	public void verifyCompanyPageURL() throws InterruptedException 
+	public void verifyCompanyPageURL() 
 	{
 		
 		homePage.clickCompanyTab();
-		Assert.assertEquals(companyPage.getURL(),"https://www.musala.com/company/"); 
+		
+		Assert.assertEquals(companyPage.getURL(),
+				"https://www.musala.com/company/"); 
 	}
 
 	@Test(priority=1,description="Verify the presence of Leadership section")
 	@Description("Verify that the company page contains the Leadership section")
 	@Epic ("Musalasoft TestCase2")
-	public void verifyLeadershipSection() 
+	public void verifyLeadershipSection()
 	{
 		homePage.clickCompanyTab();
+		
 		Assert.assertTrue(companyPage.searchForSection(SearchingkeyWord));
 	}
 
-	@Test(priority=2,description="Verify correct URL of Facebook page")
-	@Description("Verify that the correct URL of the Facebook page loads after clicking Facebook button")
+	@Test(priority=2,description="Verify correct URL and profile picture of Facebook page")
+	@Description("Verify that the correct URL of FB page loads and that the profile picture appears")
 	@Epic ("Musalasoft TestCase2")
-	public void verifyFBURL() 
+	public void verifyFBURLAndPorfileImg() 
 	{
 
 		homePage.clickCompanyTab();
 		companyPage.clickFBButton();
-		Assert.assertEquals( musalaFaceBookPage.getURL(), "https://www.facebook.com/MusalaSoft?fref=ts"); 
-	}
-
-	@Test(priority=3,description="Verify profile picture on Facebook page")
-	@Description("Verify that the profile picture appears on Facebook page")
-	@Epic ("Musalasoft TestCase2")
-	public void verifyProfileImgIsDisplayed() 
-	{
-		homePage.clickCompanyTab();
-		companyPage.clickFBButton();
+		
+		Assert.assertEquals( musalaFaceBookPage.getURL(),
+				"https://www.facebook.com/MusalaSoft?fref=ts"); 
+		
 		Assert.assertTrue(musalaFaceBookPage.checkFBProfilePicture());
 	}
+
 
 	@BeforeMethod
 	public void setup() 

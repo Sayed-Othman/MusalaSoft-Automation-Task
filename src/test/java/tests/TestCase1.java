@@ -36,7 +36,9 @@ public class TestCase1 extends BaseTest {
 		homePage.enterSubject("mySubject");
 		homePage.enterMessageText("This is My message");
 		homePage.clickSubmitButton();
-		Assert.assertEquals(homePage.getErrorMessage(),"The e-mail address entered is invalid."); 
+		
+		Assert.assertEquals(homePage.getErrorMessage(),
+				"The e-mail address entered is invalid."); 
 	}
 
 	@DataProvider(name="ExcelData")
